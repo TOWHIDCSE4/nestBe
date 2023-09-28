@@ -1,0 +1,12 @@
+export enum AppEnvironment {
+  LOCAL = 'LOCAL',
+  TEST = 'TEST',
+  DEVELOPMENT = 'DEVELOPMENT',
+  STAGE = 'STAGE',
+  PRODUCTION = 'PRODUCTION',
+}
+
+export enum EventEmitterName {
+  NOTIFICATION_USER = 'NOTIFICATION_USER',
+  NOTIFICATION_ADMIN = 'NOTIFICATION_ADMIN',
+}
