@@ -37,16 +37,16 @@ export class UserController {
       );
     } catch (error) {
       console.log(error);
-      
+
       if (error instanceof NotFoundException) {
         return {
-            code: 404,
-            success: true,
-            msg_code: 'BAD REQUEST',
-            msg: 'Users Not Found',
-            data: null,
+          code: 404,
+          success: true,
+          msg_code: 'BAD REQUEST',
+          msg: 'Users Not Found',
+          data: null,
         };
-    }
+      }
 
     }
 
@@ -55,26 +55,51 @@ export class UserController {
 
   @Get(':user_id')
   async getUserById(@Param('user_id') user_id: number): Promise<any> {
-      try {
-          const banner = await this.userService.findById(user_id);
-          return new QueryResponseDto(
-              HttpStatus.OK,
-              true,
-              MsgCode.SUCCESS[0],
-              MsgCode.SUCCESS[1],
-              banner,
-          );
-      } catch (error) {
-          if (error instanceof NotFoundException) {
-              return {
-                  code: 404,
-                  success: true,
-                  msg_code: 'BAD REQUEST',
-                  msg: 'User Not Found with that Id',
-                  data: null,
-              };
-          }
+    try {
+      const banner = await this.userService.findById(user_id);
+      return new QueryResponseDto(
+        HttpStatus.OK,
+        true,
+        MsgCode.SUCCESS[0],
+        MsgCode.SUCCESS[1],
+        banner,
+      );
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        return {
+          code: 404,
+          success: true,
+          msg_code: 'BAD REQUEST',
+          msg: 'User Not Found with that Id',
+          data: null,
+        };
       }
+    }
+  }
+
+  @Post(':user_id/set_host')
+  async create(@Param('user_id') userId: number) {
+
+    try {
+      const isUpdated = await this.userService.setHost(userId);
+      return new QueryResponseDto(
+        HttpStatus.OK,
+        true,
+        MsgCode.SUCCESS[0],
+        MsgCode.SUCCESS[1],
+        isUpdated,
+      );
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        return {
+          code: 404,
+          success: true,
+          msg_code: 'BAD REQUEST',
+          msg: 'User Not Found with that Id',
+          data: null,
+        };
+      }
+    }
   }
 
 }
