@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, HttpStatus, NotFoundException, Param } from '@nestjs/common';
+import { Controller, Delete, Get, HttpStatus, NotFoundException, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AdminMotelService } from './admin-motel.service';
 import { MsgCode } from '../../shared/constants/message.constants';
@@ -23,10 +23,10 @@ export class AdminMotelController {
       );
     }
 
-    @Get(':motelId')
-    async getBannerById(@Param('motelId') motelId: number): Promise<any> {
+    @Get(':motel_id')
+    async getBannerById(@Param('motel_id') motel_id: number): Promise<any> {
         try {
-            const banner = await this.motelService.getById(motelId);
+            const banner = await this.motelService.getById(motel_id);
             return new QueryResponseDto(
                 HttpStatus.OK,
                 true,
@@ -40,12 +40,15 @@ export class AdminMotelController {
                     code: 404,
                     success: true,
                     msg_code: 'BAD REQUEST',
-                    msg: 'Mo Service Not Found with that Id',
+                    msg: 'Motels Not Found with that Id',
                     data: null,
                 };
             }
         }
+    }
 
-
+    @Delete(':motel_id')
+    deleteServiceSell(@Param('motel_id') motel_id: number) {
+      return this.motelService.deleteMotels(motel_id);
     }
 }
