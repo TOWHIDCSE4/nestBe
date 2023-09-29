@@ -7,13 +7,18 @@ import { User } from './entties/user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-  ) {}
+  ) { }
 
-  async findByEmail(email: string): Promise<User> {
+  async findById(id: number): Promise<User> {
     return this.userRepository.findOne({
       where: {
-        email: email,
+        id: id,
       },
     });
+  }
+
+  async getAll() {
+    const users = await this.userRepository.find({});
+    return users;
   }
 }

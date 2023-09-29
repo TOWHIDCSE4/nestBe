@@ -27,7 +27,7 @@ import { MoServiceModule } from './mo-service/mo-service.module';
 import { NotificationModule } from './notification/notification.module';
 import { ServiceSellModule } from './service-sell/service-sell.module';
 import { ServiceModule } from './service/service.module';
-import { UserModule } from './user/user.module';
+import { UserModule } from './admin/users/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { WithdrawalsModule } from './withdrawals/withdrawals.module';
 import { SystemPermissionsModule } from './system_permissions/system_permissions.module';

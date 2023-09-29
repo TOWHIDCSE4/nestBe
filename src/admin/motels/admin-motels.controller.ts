@@ -24,7 +24,7 @@ export class AdminMotelController {
     }
 
     @Get(':motel_id')
-    async getBannerById(@Param('motel_id') motel_id: number): Promise<any> {
+    async getMotelById(@Param('motel_id') motel_id: number): Promise<any> {
         try {
             const banner = await this.motelService.getById(motel_id);
             return new QueryResponseDto(
