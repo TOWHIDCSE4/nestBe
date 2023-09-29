@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module, OnModuleInit, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_PIPE, ModuleRef } from '@nestjs/core';
@@ -30,6 +31,7 @@ import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { WithdrawalsModule } from './withdrawals/withdrawals.module';
 import { SystemPermissionsModule } from './system_permissions/system_permissions.module';
+import { AdminMotelsModule } from './admin/motels/admin-motels.module';
 
 @Module({
   imports: [
@@ -54,6 +56,7 @@ import { SystemPermissionsModule } from './system_permissions/system_permissions
     ServiceSellModule,
     ExternalModule,
     AdminBannerModule,
+    AdminMotelsModule,
     ServiceModule,
     MoServiceModule,
     UserModule,

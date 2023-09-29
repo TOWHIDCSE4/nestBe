@@ -1,9 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseEntity } from '../../common/entities/base.entity';
-
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity } from '../../../common/entities/base.entity';
 
 @Entity('motels')
-export class Motels extends BaseEntity {
+export class AdminMotels extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;
 
@@ -19,18 +18,18 @@ export class Motels extends BaseEntity {
   @Column({ type: 'varchar', nullable: true })
   phone_number: string;
 
-  @Column({ type: 'varchar' , nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   title: string;
 
-  @Column({ type: 'longtext',nullable: true })
+  @Column({ type: 'longtext', nullable: true })
   description: string;
 
-  @Column({ type: 'varchar',nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   motel_name: string;
 
   @Column({ type: 'int', nullable: true })
   capacity: number;
-  
+
   @Column({ type: 'int', nullable: true })
   sex: number;
 
@@ -44,7 +43,7 @@ export class Motels extends BaseEntity {
   deposit?: number;
 
   @Column({ type: 'double', default: 1, nullable: true })
-  electric_money	?: number;
+  electric_money?: number;
 
   @Column({ type: 'double', default: 1, nullable: true })
   water_money: number;
@@ -68,7 +67,7 @@ export class Motels extends BaseEntity {
   province_name: string;
 
   @Column({ type: 'varchar', nullable: true })
-  district_name	: string;
+  district_name: string;
 
   @Column({ type: 'varchar', nullable: true })
   wards_name: string;
@@ -100,51 +99,49 @@ export class Motels extends BaseEntity {
   @Column({ type: 'tinyint', nullable: true })
   has_free_move: number;
 
-  
+  // @Column({ type: 'double', default: 1, nullable: true })
+  // deposit_money?: number;
 
-  @Column({ type: 'double', default: 1, nullable: true })
-  deposit_money?: number;
+  // @Column({ type: 'varchar', nullable: true })
+  // cmnd_number?: string;
 
-  @Column({ type: 'varchar', nullable: true })
-  cmnd_number?: string;
+  // @Column({ type: 'varchar', nullable: true })
+  // cmnd_front_image_url?: string;
 
-  @Column({ type: 'varchar', nullable: true })
-  cmnd_front_image_url?: string;
-
-  @Column({ type: 'varchar', nullable: true })
-  cmnd_back_image_url?: string;
+  // @Column({ type: 'varchar', nullable: true })
+  // cmnd_back_image_url?: string;
 
   @Column({ type: 'int', nullable: true, default: 0 })
   status?: number;
 
-  @Column({ type: 'timestamp', nullable: true })
-  pay_start?: Date;
+  // @Column({ type: 'timestamp', nullable: true })
+  // pay_start?: Date;
 
   @Column({ type: 'longtext', nullable: true })
   images?: string;
 
-  @Column({ type: 'longtext', nullable: true })
-  mo_services?: string;
+  // @Column({ type: 'longtext', nullable: true })
+  // mo_services?: string;
 
-  @Column({ type: 'varchar', nullable: true })
-  note?: string;
+  // @Column({ type: 'varchar', nullable: true })
+  // note?: string;
 
-  @Column({ type: 'double', nullable: true, default: 0 })
-  deposit_amount_paid?: number;
+  // @Column({ type: 'double', nullable: true, default: 0 })
+  // deposit_amount_paid?: number;
 
-  @Column({ type: 'longtext', nullable: true })
-  images_deposit?: string;
+  // @Column({ type: 'longtext', nullable: true })
+  // images_deposit?: string;
 
   @Column({ type: 'longtext', nullable: true })
   furniture?: string;
 
-  @Column({ type: 'timestamp', nullable: true })
-  deposit_payment_date?: Date;
+  // @Column({ type: 'timestamp', nullable: true })
+  // deposit_payment_date?: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
-  deposit_used_date?: Date;
+  // @Column({ type: 'timestamp', nullable: true })
+  // deposit_used_date?: Date;
 
-  @Column({ type: 'double', nullable: true })
-  deposit_actual_paid?: number;
-  motels: Motels[];
+  // @Column({ type: 'double', nullable: true })
+  // deposit_actual_paid?: number;
+  // motels: AdminMotels[];
 }
