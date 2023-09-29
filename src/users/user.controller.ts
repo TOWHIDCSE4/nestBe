@@ -15,8 +15,8 @@ import {
 
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { QueryResponseDto } from '../../shared/dto/query-response.dto';
-import { MsgCode } from '../../shared/constants/message.constants';
+import { QueryResponseDto } from '../shared/dto/query-response.dto';
+import { MsgCode } from '../shared/constants/message.constants';
 
 @ApiTags('Users')
 @Controller('admin/users')
