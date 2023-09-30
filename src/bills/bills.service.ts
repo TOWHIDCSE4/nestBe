@@ -1,26 +1,30 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { CreateBillDto } from './dto/create-bill.dto';
-import { UpdateBillDto } from './dto/update-bill.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Bills } from './entities/bill.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BillsService {
+  constructor(
+    @InjectRepository(Bills) private readonly billRepository: Repository<Bills>,
+  ) { }
+
   create(createBillDto: CreateBillDto) {
     return 'This action adds a new bill';
   }
 
-  findAll() {
-    return `This action returns all bills`;
+  async findAll() {
+    const bills = await this.billRepository.find();
+    return bills;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bill`;
-  }
-
-  update(id: number, updateBillDto: UpdateBillDto) {
-    return `This action updates a #${id} bill`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} bill`;
+  async findById(id: number): Promise<Bills> {
+    return this.billRepository.findOne({
+      where: {
+        id: id,
+      },
+    });
   }
 }
