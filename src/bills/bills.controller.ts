@@ -2,7 +2,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Headers, HttpStatus, NotFoundException } from '@nestjs/common';
 import { BillsService } from './bills.service';
 import { CreateBillDto } from './dto/create-bill.dto';
-import { GetListBillDto } from './dto/list-bill.dto';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { QueryResponseDto } from '../shared/dto/query-response.dto';
 import { MsgCode } from '../shared/constants/message.constants';

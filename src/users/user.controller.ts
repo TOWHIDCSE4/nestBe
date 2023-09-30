@@ -17,6 +17,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { QueryResponseDto } from '../shared/dto/query-response.dto';
 import { MsgCode } from '../shared/constants/message.constants';
+import { GetListUserDto } from './dtos/list-user.dto';
 
 @ApiTags('Users')
 @Controller('admin/users')
@@ -24,30 +25,13 @@ export class UserController {
   constructor(private userService: UserService) { }
 
   @Get()
-  async getAllUsers(): Promise<any> {
+  async getAllUsers(@Query() query: GetListUserDto, @Headers() headers: any): Promise<any> {
 
     try {
-      const users = await this.userService.getAll();
-      return new QueryResponseDto(
-        HttpStatus.OK,
-        true,
-        MsgCode.SUCCESS[0],
-        MsgCode.SUCCESS[1],
-        users,
-      );
+      const users = await this.userService.getList(query, headers);
+      return users
     } catch (error) {
       console.log(error);
-
-      if (error instanceof NotFoundException) {
-        return {
-          code: 404,
-          success: true,
-          msg_code: 'BAD REQUEST',
-          msg: 'Users Not Found',
-          data: null,
-        };
-      }
-
     }
 
   }
