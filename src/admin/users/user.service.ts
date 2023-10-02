@@ -3,12 +3,12 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entties/user.entity';
-import { BadRequestExc } from '../common/exceptions/custom.exception';
-import { StatusCode } from '../common/constants/status-code.constant';
+import { BadRequestExc } from '../../common/exceptions/custom.exception';
+import { StatusCode } from '../../common/constants/status-code.constant';
 import { GetListUserDto } from './dtos/list-user.dto';
 import dayjs from 'dayjs';
 import { paginate } from 'nestjs-typeorm-paginate';
-import { AppResponseDto } from '../common/dtos/app-response.dto';
+import { AppResponseDto } from '../../common/dtos/app-response.dto';
 
 @Injectable()
 export class UserService {

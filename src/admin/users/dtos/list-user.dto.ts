@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { IsValidBoolean, IsValidDate, IsValidNumber, IsValidText } from "../../common/decorators/custom-validator.decorator";
-import { PaginationReqDto } from "../../common/dtos/pagination.dto";
+import { IsValidBoolean, IsValidDate, IsValidNumber, IsValidText } from "../../../common/decorators/custom-validator.decorator";
+import { PaginationReqDto } from "../../../common/dtos/pagination.dto";
 
 
 export class GetListUserDto extends PaginationReqDto {
