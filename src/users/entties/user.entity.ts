@@ -47,12 +47,6 @@ export class User {
   @Column({ type: 'int', default: 2 })
   status: number;
 
-  @Column({ type: 'double', unsigned: true, default: 0 })
-  golden_coin: number;
-
-  @Column({ type: 'double', unsigned: true, default: 0 })
-  silver_coin: number;
-
   @Column({ type: 'tinyint', nullable: true })
   is_host: number;
 
