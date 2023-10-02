@@ -171,8 +171,8 @@ export class MoPost {
     @Column({ name: 'has_mattress', default: 0, nullable: true })
     hasMattress: number;
 
-    @Column({ name: 'has_shoes_racks', default: 0, nullable: true })
-    hasShoesRacks: number;
+    // @Column({ name: 'has_shoes_racks', default: 0, nullable: true })
+    // hasShoesRacks: number;
 
     @Column({ name: 'has_curtain', default: 0, nullable: true })
     hasCurtain: number;

@@ -1,26 +1,46 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { CreateMoPostDto } from './dto/create-mo-post.dto';
-import { UpdateMoPostDto } from './dto/update-mo-post.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { MoPost } from './entities/mo-post.entity';
+import { Repository } from 'typeorm';
+import { BadRequestExc } from '../../../common/exceptions/custom.exception';
+import { StatusCode } from '../../../common/constants/status-code.constant';
+import { AppResponseDto } from '../../../common/dtos/app-response.dto';
 
 @Injectable()
 export class MoPostsService {
-  create(createMoPostDto: CreateMoPostDto) {
-    return 'This action adds a new moPost';
+
+  constructor(
+    @InjectRepository(MoPost) private readonly moPostRepository: Repository<MoPost>,
+  ) { }
+  
+
+  async findAll() {
+    const bills = await this.moPostRepository.find({take:10});
+    return bills;
   }
 
-  findAll() {
-    return `This action returns all moPosts`;
+  async findOne(id: number): Promise<MoPost> {
+    
+    return this.moPostRepository.findOne({
+      where: {
+        id: id,
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} moPost`;
-  }
+  async remove(id: number) {
+    const post = await this.moPostRepository.findOne({
+      where: {
+        id: id,
+      },
+    })
 
-  update(id: number, updateMoPostDto: UpdateMoPostDto) {
-    return `This action updates a #${id} moPost`;
-  }
+    if (!post)
+      throw new BadRequestExc(StatusCode.NO_SERVICE_SELL_EXISTS);
 
-  remove(id: number) {
-    return `This action removes a #${id} moPost`;
+    await this.moPostRepository.delete(id);
+
+    return AppResponseDto.fromNonePagination({ idDeleted: id });
   }
 }
