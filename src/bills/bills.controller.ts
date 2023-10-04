@@ -14,30 +14,20 @@ export class BillsController {
 
 
   // @Post()
-  // createRequestWithdraws(
-  //   @CurrentUser() user: User,
-  //   @Body() body: RequestWithdrawalReqDto,
-  // ) {
-  //   return this.withdrawalsCommunityService.requestWithdrawal(body, user);
+  // create(@Body() createBillDto: CreateBillDto) {
+  //   return this.billsService.create(createBillDto);
   // }
 
-
-  @Post()
-  create(@Body() createBillDto: CreateBillDto) {
-    return this.billsService.create(createBillDto);
-  }
-
-  @ApiParam({ name: 'bill_id', required: false })
-  @Get(':bill_id')
-  async findAll(@Param('bill_id') bill_id?: number) {
+  @Get()
+  async findAll() {
     try {
-      const users = bill_id ? await this.billsService.findById(bill_id) : await this.billsService.findAll();
+      const bills = await this.billsService.findAll();
       return new QueryResponseDto(
         HttpStatus.OK,
         true,
         MsgCode.SUCCESS[0],
         MsgCode.SUCCESS[1],
-        users,
+        bills,
       );
     } catch (error) {
       if (error instanceof NotFoundException) {
@@ -49,7 +39,33 @@ export class BillsController {
           data: null,
         };
       }
+    }
+  }
+  @Get(':bill_id')
+  async findOne(@Param('bill_id') bill_id: number) {
+    try {
+      const bill = await this.billsService.findById(bill_id)
+      return new QueryResponseDto(
+        HttpStatus.OK,
+        true,
+        MsgCode.SUCCESS[0],
+        MsgCode.SUCCESS[1],
+        bill,
+      );
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        return {
+          code: 404,
+          success: true,
+          msg_code: 'BAD REQUEST',
+          msg: 'User Bill Not Found',
+          data: null,
+        };
+      }
 
     }
   }
+
+
+
 }
