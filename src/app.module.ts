@@ -33,6 +33,7 @@ import { WithdrawalsModule } from './withdrawals/withdrawals.module';
 import { SystemPermissionsModule } from './system_permissions/system_permissions.module';
 import { AdminMotelsModule } from './admin/motels/admin-motels.module';
 import { BillsModule } from './bills/bills.module';
+import { MoPostsModule } from './user/manage/mo-posts/mo-posts.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { BillsModule } from './bills/bills.module';
     NotificationModule,
     SystemPermissionsModule,
     BillsModule,
+    MoPostsModule,
   ],
   controllers: [AppController],
   providers: [
