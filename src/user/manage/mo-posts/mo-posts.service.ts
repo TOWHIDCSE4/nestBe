@@ -16,7 +16,7 @@ export class MoPostsService {
   
 
   async findAll() {
-    const bills = await this.moPostRepository.find({take:10});
+    const bills = await this.moPostRepository.find({});
     return bills;
   }
 
