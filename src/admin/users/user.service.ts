@@ -36,8 +36,7 @@ export class UserService {
       page,
       limit
     } = query;
-    console.log(limit, page);
-
+    
     if (limit >= 600 || limit < 1) {
       throw new BadRequestExc(StatusCode.INVALID_LIMIT_REQUEST);
     }

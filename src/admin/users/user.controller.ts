@@ -22,7 +22,7 @@ import { AuthenticateAdmin } from '../../common/decorators/auth.decorator';
 
 @ApiTags('Users')
 @Controller('admin/users')
-// @AuthenticateAdmin()
+@AuthenticateAdmin()
 export class UserController {
   constructor(private userService: UserService) { }
 
