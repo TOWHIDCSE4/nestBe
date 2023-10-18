@@ -4,9 +4,11 @@ import { ApiTags } from '@nestjs/swagger';
 import { AdminMotelService } from './admin-motel.service';
 import { MsgCode } from '../../shared/constants/message.constants';
 import { QueryResponseDto } from '../../shared/dto/query-response.dto';
+import { AuthenticateAdmin } from '../../common/decorators/auth.decorator';
 
 @ApiTags('Admin Motel Service')
 @Controller('admin/motels')
+@AuthenticateAdmin()
 export class AdminMotelController {
     constructor(private readonly motelService: AdminMotelService) { }
 

@@ -11,8 +11,11 @@ import { ApiTags } from '@nestjs/swagger';
 import { UpdateMoServiceDto } from '../dtos/update-mo-service.dto';
 import { MoServiceService } from '../services/mo-service.service';
 
+import { AuthenticateAdmin } from '../../common/decorators/auth.decorator';
+
 @ApiTags('MoService')
 @Controller('user/manage/mo_services')
+@AuthenticateAdmin()
 export class MoServiceController {
   constructor(private readonly MosSrviceService: MoServiceService) {}
 

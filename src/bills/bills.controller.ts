@@ -5,9 +5,11 @@ import { CreateBillDto } from './dto/create-bill.dto';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { QueryResponseDto } from '../shared/dto/query-response.dto';
 import { MsgCode } from '../shared/constants/message.constants';
+import { AuthenticateAdmin } from '../common/decorators/auth.decorator';
 
 @ApiTags('Users Bills')
 @Controller('user/manage/bills')
+@AuthenticateAdmin()
 export class BillsController {
 
   constructor(private readonly billsService: BillsService) { }

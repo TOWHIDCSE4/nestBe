@@ -4,8 +4,10 @@ import { MoServiceController } from './controllers/mo-service.controller';
 import { MoServiceRepository } from './repositories/mo-service.repository';
 import { MoServiceService } from './services/mo-service.service';
 
+import { AuthModule } from '../auth/auth.module';
+
 @Module({
-  imports: [TypeOrmCustomModule.forFeature([MoServiceRepository])],
+  imports: [AuthModule, TypeOrmCustomModule.forFeature([MoServiceRepository])],
   controllers: [MoServiceController],
   providers: [MoServiceService],
 })

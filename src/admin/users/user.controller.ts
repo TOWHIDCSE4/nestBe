@@ -18,9 +18,11 @@ import { UserService } from './user.service';
 import { QueryResponseDto } from '../../shared/dto/query-response.dto';
 import { MsgCode } from '../../shared/constants/message.constants';
 import { GetListUserDto } from './dtos/list-user.dto';
+import { AuthenticateAdmin } from '../../common/decorators/auth.decorator';
 
 @ApiTags('Users')
 @Controller('admin/users')
+// @AuthenticateAdmin()
 export class UserController {
   constructor(private userService: UserService) { }
 

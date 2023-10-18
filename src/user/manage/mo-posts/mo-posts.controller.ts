@@ -4,10 +4,12 @@ import { MoPostsService } from './mo-posts.service';
 import { ApiTags } from '@nestjs/swagger';
 import { QueryResponseDto } from '../../../shared/dto/query-response.dto';
 import { MsgCode } from '../../../shared/constants/message.constants';
+import { AuthenticateAdmin } from '../../../common/decorators/auth.decorator';
 
 
 @ApiTags('User Manage Mo-posts')
 @Controller('user/manage/mo_posts')
+@AuthenticateAdmin()
 export class MoPostsController {
   constructor(private readonly moPostsService: MoPostsService) { }
 

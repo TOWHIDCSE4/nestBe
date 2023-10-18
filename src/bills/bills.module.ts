@@ -4,9 +4,10 @@ import { BillsService } from './bills.service';
 import { BillsController } from './bills.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Bills } from './entities/bill.entity';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Bills])],
+  imports: [AuthModule, TypeOrmModule.forFeature([Bills])],
   controllers: [BillsController],
   providers: [BillsService],
   exports: [TypeOrmModule, BillsService],
